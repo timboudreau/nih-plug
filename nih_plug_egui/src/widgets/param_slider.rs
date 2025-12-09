@@ -202,7 +202,9 @@ impl<'a, P: Param> ParamSlider<'a, P> {
             } else {
                 let proportion =
                     emath::remap_clamp(click_pos.x, response.rect.x_range(), 0.0..=1.0) as f64;
+                self.begin_drag();
                 self.set_normalized_value(proportion as f32);
+                self.end_drag();
                 response.mark_changed();
                 Self::set_drag_amount_memory(ui, 0.0);
             }
